@@ -28,6 +28,12 @@ app.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
       controller: "MainCtrl",
       //access: role['admin']
     })
+    .state('stock', {
+      url: "/stock?ticker",
+      templateUrl: "/assets/html/home/stock.html",
+      controller: "StockCtrl",
+      //access: role['admin']
+    })
 
   $locationProvider.html5Mode(true)
 })

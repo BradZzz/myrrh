@@ -34,11 +34,11 @@ body {
 .selectable {
   cursor: pointer;
 }
-.center-this {
+.center-horizontal {
   text-align: center;
   margin: 0 auto;
 }
-.center-this.center-vertical {
+.center-vertical {
   display: flex;
   justify-content: center;
   align-items: center;
