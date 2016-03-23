@@ -1,0 +1,28 @@
+<div>
+	<div id="navbar" ng-controller="HeaderCtrl"><div ng-include src="'assets/html/partials/header.html'"></div></div>
+	<md-virtual-repeat-container id="vertical-container">
+		<div md-virtual-repeat="item in ctrl.test" class="repeated-item" flex>
+			{{ page.ticker }}
+		</div>
+	</md-virtual-repeat-container>
+	<div layout="row">
+		<md-virtual-repeat-container flex-gt-sm="80" flex="100" id="vertical-container" style="min-height:90vh;">
+			<md-card md-virtual-repeat="page in ctrl.test" class="repeated-item selectable" flex layout="row" style="margin:10px;" md-on-demand>
+				<img flex="10" ng-src="assets/img/test/icon_placeholder.png" style="max-width:40px; max-height:40px; margin: 10px;"/>
+				<span flex-gt-sm="10" flex="20" class="center-this center-vertical">{{ page.invested }}</span>
+				<div flex-offset="5" flex-offset-gt-sm="0" flex-gt-sm="75" flex="70" class="center-vertical" style="position:relative;">
+					<div layout="row" style="position:absolute;top:0;left:0;margin-top: 10px;">
+						<span flex>{{ page.ticker }}</span>
+					</div>
+					<div layout="row" style="position:absolute;bottom:0;left:0;font-size: 12px;font-weight: bold;margin-bottom: 10px;">
+						<span style="margin-right:20px;">{{ page.comments.length }} Comments</span>
+						<span ng-repeat="link in ctrl.links" style="margin-right:20px;" hide show-gt-sm>{{ link }}</span>
+					</div>
+				</div>
+			</md-card>
+		</md-virtual-repeat-container>
+		<md-card hide flex-gt-sm="18" show-gt-sm flex>
+
+		</md-card>
+	</div>
+</div>
