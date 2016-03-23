@@ -1,7 +1,6 @@
 angular.module('ambrosia').controller('RootCtrl', function (
   $rootScope, $state, $stateParams, $timeout, cfpLoadingBar)
 {
-    console.log("rootctrl")
   $rootScope.safeApply = function (fn) {
     var $root = this.$root
     if (!$root) return fn()

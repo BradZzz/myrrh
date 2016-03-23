@@ -19,8 +19,6 @@ var app = angular.module('ambrosia', modules)
 
 app.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
 
-    console.log('here1')
-
   $urlRouterProvider.otherwise("/")
 
   $stateProvider
@@ -32,12 +30,10 @@ app.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
     })
 
   $locationProvider.html5Mode(true)
-  console.log('here2')
 })
 
 app.run(function ($rootScope) {
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
-    console.log('here3')
     /*if (!$rootScope.auth) {
       $location.path('/login')
     } else {
