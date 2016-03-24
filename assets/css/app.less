@@ -45,13 +45,42 @@ html, body {
     margin: 0 auto;
 }
 
+.center-vertical-parent {
+    display: inline-flex;
+    height: 60px;
+}
+
 .center-vertical {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+@media screen and (max-width: 600px) {
+    .header .nav-icons .nav-home {
+        margin-right: 30px !important;
+    }
+    .main .dbl-wrapper .dbl-icon {
+        margin-top: 10px;
+    }
+}
+
 .header {
     background: @hue-5;
     color: white;
+    .nav-icons .nav-home {
+        text-align: right;
+        max-width: 60px;
+        margin-right: 80px;
+    }
+}
+
+.main {
+    .dbl-wrapper {
+        align-items:center;
+        font-size:18px;
+        .dbl-icon {
+            text-align:center;
+        }
+    }
 }
