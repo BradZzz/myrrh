@@ -31,8 +31,14 @@ body {
   left: 0;
   bottom: 0;
 }
+.rounded {
+  border-radius: 5px;
+  background: #004e5e;
+  padding: 6px;
+}
 .selectable {
   cursor: pointer;
+  outline: none;
 }
 .center-horizontal {
   text-align: center;

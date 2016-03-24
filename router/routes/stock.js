@@ -12,10 +12,14 @@ var fs   = require('fs')
 var Q    = require('q')
 var finance = require('yahoo-finance')
 var moment = require('moment')
+var Chance = require('chance'), chance = new Chance();
+var _ = require('underscore')
 
 var nasdaq = fs.createReadStream("./stock_csv/nasdaq.csv")
 var nyse = fs.createReadStream("./stock_csv/nyse.csv")
 var asx = fs.createReadStream("./stock_csv/asx.csv")
+
+var cache = {}
 
 module.exports = function (app) {
 
@@ -24,6 +28,7 @@ module.exports = function (app) {
     if ('sym' in req.query) {
         var start = 'start' in req.query ? req.query.start : moment().subtract(6, 'months').format('YYYY-MM-DD')
         var end = 'end' in req.query ? req.query.end : moment().format('YYYY-MM-DD')
+        // period: 'd'  // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)
         var period = 'period' in req.query ? req.query.period : 'w'
 
         console.log(start)
@@ -45,19 +50,95 @@ module.exports = function (app) {
   })
 
   app.get('/stock/list', function(req, res) {
+    if ('list' in cache) {
+        return res.status(200).json(cache.list)
+    } else {
+        var exchangeNASDAQ = getStockStream(nasdaq, "nasdaq")
+        var exchangeNYSE = getStockStream(nyse, "nyse")
 
-    var exchangeNASDAQ = getStockStream(nasdaq, "nasdaq")
-    var exchangeNYSE = getStockStream(nyse, "nyse")
+        var exchanges = [exchangeNASDAQ, exchangeNYSE]
 
-    var exchanges = [exchangeNASDAQ, exchangeNYSE]
+        Q.all(exchanges).then(function(gResp){
+            console.log("finished")
+            cache.list = gResp
+            return res.status(200).json(gResp)
+        }, function (err){
+            console.log("error")
+            console.log(err)
+        })
+    }
+  });
 
-    Q.all(exchanges).then(function(gResp){
-        console.log("finished")
-        return res.status(200).json(gResp)
-    }, function (err){
-        console.log("error")
+  app.get('/stock/testList', function(req, res) {
+      if ('testList' in cache) {
+          return res.status(200).json(cache.testList)
+      } else {
+          var exchangeNASDAQ = getStockStream(nasdaq, "nasdaq")
+          var exchangeNYSE = getStockStream(nyse, "nyse")
+
+          var exchanges = [exchangeNASDAQ, exchangeNYSE]
+
+          Q.all(exchanges).then(function(gResp){
+              console.log("testlist")
+
+              var list = {}
+              var tickers = _.union(gResp[0].data, gResp[1].data)
+              var listSize = tickers.length
+
+              console.log(tickers)
+
+              while (Object.keys(list).length < listSize && tickers.length > 0) {
+
+                console.log(Object.keys(list).length)
+                console.log(chance.integer({min: 0, max: 10}))
+
+                var pick = chance.integer({min: 0, max: tickers.length - 1})
+
+                console.log(pick)
+                console.log(tickers[pick])
+
+                while (tickers[pick] in list) {
+                    pick = chance.integer({min: 0, max: tickers.length - 1})
+                }
+                console.log('here')
+                var maxLength = chance.integer({min: 1, max: 10})
+                var comments = []
+                while (comments.length < maxLength) {
+                    comments.push({
+                        user: chance.word({syllables: chance.integer({min: 1, max: 10})}),
+                        text: chance.paragraph({sentences: chance.integer({min: 1, max: 3})})
+                    })
+                }
+                console.log('here2')
+                list[tickers[pick]] = { ticker: tickers[pick], invested : chance.integer({min: 0, max: 10000}),
+                    comments : comments, buyFee : chance.integer({min: 0, max: 100}).toFixed(2) }
+                console.log(list[tickers[pick]])
+              }
+              //list = _.sortBy(_.map(list, function(pick){ return pick }), function(pick){ return -pick.invested })
+              console.log('finished')
+              console.log(list)
+
+              cache.testList = list
+              return res.status(200).json(list)
+          }, function (err){
+              console.log("error")
+              console.log(err)
+          })
+      }
+    });
+
+  app.get('/stock/snapshot', function(req, res) {
+    if ('sym' in req.query) {
+      finance.snapshot({
+        symbol: req.query.sym
+      }, function (err, snapshot) {
         console.log(err)
-    })
+        console.log(snapshot)
+        return res.status(200).json(snapshot)
+      })
+    } else {
+      return res.status(400).json("Bad Request")
+    }
   });
 
   function getStockStream(stream, exchange){

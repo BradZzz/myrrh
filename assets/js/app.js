@@ -29,7 +29,7 @@ app.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
       //access: role['admin']
     })
     .state('stock', {
-      url: "/stock?ticker",
+      url: "/stockui?ticker",
       templateUrl: "/assets/html/home/stock.html",
       controller: "StockCtrl",
       //access: role['admin']

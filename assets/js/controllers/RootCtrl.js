@@ -53,4 +53,10 @@ angular.module('ambrosia').controller('RootCtrl', function (
   $rootScope.$on('cfpLoadingBar:complete', function () {
     cancelLoadingTimeout()
   })
+
+  $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
+      console.log('here')
+      // this is required if you want to prevent the $UrlRouter reverting the URL to the previous valid location
+      event.preventDefault();
+  })
 });

@@ -1,17 +1,15 @@
 <div>
 	<div id="navbar" ng-controller="HeaderCtrl"><div ng-include src="'assets/html/partials/header.html'"></div></div>
-	<md-virtual-repeat-container id="vertical-container">
-		<div md-virtual-repeat="item in ctrl.test" class="repeated-item" flex>
-			{{ page.ticker }}
-		</div>
-	</md-virtual-repeat-container>
 	<div layout="row">
 		<md-virtual-repeat-container flex-gt-sm="80" flex="100" id="vertical-container" style="min-height:90vh;">
-			<md-card md-virtual-repeat="page in ctrl.test" class="repeated-item selectable" flex layout="row" style="margin:10px;"
+			<md-card md-virtual-repeat="page in ctrl.list" class="repeated-item selectable" flex layout="row" style="margin:10px;"
 					 md-on-demand ui-sref="stock({ticker: '{{ page.ticker }}'})">
-				<span flex-gt-sm="8" flex="10" class="center-vertical">{{ page.invested }}</span>
+				<div flex-gt-sm="8" flex="10" layout="row" style="align-items:center;font-size:18px;">
+					<md-icon flex class="md-secondary icon ion-person-stalker" style="text-align:center;"></md-icon>
+					<span flex>{{ page.invested }}</span>
+				</div>
 				<div flex="10" style="position:relative;min-width:80px;">
-					<img ng-src="assets/img/test/icon_placeholder.png" style="max-width:40px; max-height:40px; margin: 10px;"/>
+					<img ng-src="assets/img/test/icon_placeholder.png" style="max-width:40px; max-height:40px; margin: 10px;" class="rounded"/>
 				</div>
 				<div flex-offset="10" flex-offset-gt-sm="5" flex-gt-sm="78" flex="70" class="center-vertical" style="position:relative;">
 					<div layout="row" style="position:absolute;top:0;left:0;margin-top: 10px;">
