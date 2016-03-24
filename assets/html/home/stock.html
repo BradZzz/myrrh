@@ -12,6 +12,18 @@
 					<div style="font-size: small;">{{ detail.key }}: {{ detail.value }}</div>
 				</span>
 			</div>
+			<div layout="column">
+				<span>Current: 0 Shares</span>
+				<div layout="row">
+					<div flex layout="column" style="max-width: 32px;">
+						<md-button style="min-width: 24px; background: rgba(37,148,107,.3); border: 1px solid #000;">+</md-button>
+						<md-button style="min-width: 24px; background: rgba(176,28,48,.3); border: 1px solid #000;">-</md-button>
+					</div>
+					<md-button style="background: rgba(37,148,107,.3); border: 1px solid #000;margin-left:20px;">.25</md-button>
+					<md-button style="background: rgba(37,148,107,.3); border: 1px solid #000;">.50</md-button>
+					<md-button style="background: rgba(37,148,107,.3); border: 1px solid #000;">1</md-button>
+				</div>
+			</div>
 			<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 		</md-content>
 	</md-card>

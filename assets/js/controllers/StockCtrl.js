@@ -90,7 +90,7 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope,
     }
 
     function checkLoaded() {
-        if ($scope.ctrl.data.length > 0 && $scope.ctrl.company.stockUserDetails.length > 0) {
+        if ('stockUserDetails' in $scope.ctrl.company && 'data' in $scope.ctrl && $scope.ctrl.data.length > 0 && $scope.ctrl.company.stockUserDetails.length > 0) {
             $rootScope.loading = false
         }
     }

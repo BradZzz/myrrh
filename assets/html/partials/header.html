@@ -1,5 +1,5 @@
 <div>
-	<md-content flex layout-padding class="header">
+	<md-content flex layout-padding class="header" style="background-image: url('{{ ctrl.backgrounds[ctrl.test.background] }}');background-size: 100%;background-repeat: no-repeat;">
 		<div class="md-primary" layout-gt-sm="row" layout="column">
 			<div flex-gt-sm="25" flex="100" flex-order-gt-sm="1" flex-order="1" class="selectable nav-icons" layout="row" layout-align="center center">
 				<span flex-gt-sm="50" flex="10" class="icon ion-android-home selectable nav-home" ui-sref="home"></span>
@@ -40,14 +40,18 @@
 		</div>
 	</md-content>
 	<md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="left">
-		<md-toolbar class="md-tall" style="background-image: url('{{ ctrl.backgrounds[0] }}');background-size: 100%;background-repeat: no-repeat;">
+		<md-toolbar layout="column" class="md-tall" style="background-image: url('{{ ctrl.backgrounds[ctrl.test.background] }}');background-size: 100%;background-repeat: no-repeat;">
 			<md-list-item layout="row">
-				<img ng-src="{{ ctrl.test.image }}" class="md-avatar" style="height:60px;width:60px;margin-top:30px;"/>
+				<img ng-src="{{ ctrl.test.image }}" class="md-avatar" style="border: 1px solid #ddd;height:60px;width:60px;margin-top:30px;"/>
 				<div class="md-list-item-text" layout="column" style="margin-top: 30px;">
 					<span>{{ ctrl.test.name }}</span>
 					<span style="font-size: small;">{{ ctrl.test.email }}</span>
 				</div>
 			</md-list-item>
+			<div layout-gt-sm="row" layout="row" style="text-align:center" class="md-margin">
+				<md-icon flex class="md-secondary icon ion-arrow-left-b selectable" ng-click="ctrl.incBackground(-1)"></md-icon>
+				<md-icon flex class="md-secondary icon ion-arrow-right-b selectable" ng-click="ctrl.incBackground(1)"></md-icon>
+			</div>
 		</md-toolbar>
 		<md-content ng-controller="LeftCtrl" layout-padding style="min-height:100vh;">
 			<md-list-item ng-repeat="tab in ctrl.nav" ng-click="tab.click()" class="selectable">

@@ -14,6 +14,7 @@
  */
 @import url('//fonts.googleapis.com/css?family=Oxygen:400,700');
 /* Colors */
+/* Colors Using */
 body {
   font-family: 'Oxygen' "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
@@ -33,7 +34,7 @@ body {
 }
 .rounded {
   border-radius: 5px;
-  background: #004e5e;
+  background: #082742;
   padding: 6px;
 }
 .selectable {
@@ -74,7 +75,6 @@ body {
   margin: 30vh auto 0 auto;
 }
 .header {
-  background: #004e5e;
   color: white;
 }
 .header .nav-icons .nav-home {

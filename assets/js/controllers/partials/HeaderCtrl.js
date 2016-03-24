@@ -1,8 +1,6 @@
 angular.module('ambrosia').controller('HeaderCtrl', function ($scope, $state, $timeout, $mdSidenav, $log, seQuotes)
 {
 
-    //_.filter($scope.ctrl.states, function(tick){ return tick.indexOf(query) > -1 })
-
   $scope.ctrl = {
     simulateQuery : false,
     isDisabled : false,
@@ -28,6 +26,7 @@ angular.module('ambrosia').controller('HeaderCtrl', function ($scope, $state, $t
         image : 'assets/img/test/test_user.png',
         name : 'Geoff Test',
         email : 'geoffrey.test@gmail.com',
+        background : 4,
     },
     nav : [
         { icon : 'ion-android-home', text : 'Home', click : function(){console.log("clicked home")} },
@@ -36,8 +35,19 @@ angular.module('ambrosia').controller('HeaderCtrl', function ($scope, $state, $t
         { icon : 'ion-ios-gear', text : 'Settings', click : function(){console.log("clicked settings")} },
         { icon : 'ion-android-exit', text : 'Logout', click : function(){console.log("clicked logout")} },
     ],
+    incBackground : function (offset) {
+        if (this.test.background + offset > this.backgrounds.length - 1 ) {
+            this.test.background = 0
+        } else if (this.test.background + offset < 0 ) {
+            this.test.background = this.backgrounds.length - 1
+        } else {
+            this.test.background += offset
+        }
+    },
     backgrounds : ['assets/img/backgrounds/wall_1.png','assets/img/backgrounds/wall_2.png',
-        'assets/img/backgrounds/wall_3.png','assets/img/backgrounds/wall_4.png',]
+        'assets/img/backgrounds/wall_3.png','assets/img/backgrounds/wall_4.png','assets/img/backgrounds/wall_5.png',
+        'assets/img/backgrounds/wall_6.png','assets/img/backgrounds/wall_7.png','assets/img/backgrounds/wall_8.png',
+        'assets/img/backgrounds/wall_9.png','assets/img/backgrounds/wall_10.png','assets/img/backgrounds/wall_11.png']
   }
 
   seQuotes.getList().then(function(response){
