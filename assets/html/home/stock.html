@@ -2,18 +2,13 @@
 	<md-card style="height:75vh;">
 		<md-content style="margin: 10px 20px 0 20px;">
 			<h3>{{ ctrl.company.name }} ({{ ctrl.company.abbr }})</h3>
-			<div layout-gt-sm="row" layout="column" style="margin-top:10px">
+			<div layout-gt-sm="row" layout="column" style="margin: 10px 0;">
 				<span ng-repeat="detail in ctrl.company.stockUserDetails" style="margin-right: 30px;">
 					<b>{{ detail.key }}</b> {{ detail.value }}
 				</span>
 			</div>
-			<div layout-gt-sm="row" layout="column" style="margin:10px 0">
-				<span ng-repeat="detail in ctrl.company.stockDetails" style="margin-right: 30px;">
-					<div style="font-size: small;">{{ detail.key }}: {{ detail.value }}</div>
-				</span>
-			</div>
 			<div layout="column">
-				<span>Current: 0 Shares</span>
+				<span style="margin-bottom:5px;"><b>Current:</b> <b>Shares</b> 0 / <b>Cost</b> $0.00</span>
 				<div layout="row">
 					<div flex layout="column" style="max-width: 32px;">
 						<md-button style="min-width: 24px; background: rgba(37,148,107,.3); border: 1px solid #000;">+</md-button>
@@ -24,7 +19,12 @@
 					<md-button style="background: rgba(37,148,107,.3); border: 1px solid #000;">1</md-button>
 				</div>
 			</div>
-			<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+			<div layout-gt-sm="row" layout="column" style="margin:10px 0">
+				<span ng-repeat="detail in ctrl.company.stockDetails" style="margin-right: 30px;">
+					<div style="font-size: small;"><b>{{ detail.key }}:</b> {{ detail.value }}</div>
+				</span>
+			</div>
+			<div id="container" style="min-width: 310px; height: 315px; margin: 0 auto"></div>
 		</md-content>
 	</md-card>
 	<md-card>

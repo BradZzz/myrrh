@@ -64,7 +64,7 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope,
               var transaction = companyList.buyFee
               var adj = (parseFloat(transaction) / parseFloat(invested)).toFixed(2)
               $scope.ctrl.company.stockUserDetails = [
-                { key : 'Invested:', value : invested },
+                { key : 'Users Invested:', value : invested },
                 { key : 'Transaction Price:', value : "$" + transaction },
                 { key : 'Adj. Transaction Price:', value : "$" + adj }
               ]
