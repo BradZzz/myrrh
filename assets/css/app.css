@@ -40,6 +40,15 @@ body {
   cursor: pointer;
   outline: none;
 }
+.show {
+  visibility: visible;
+}
+.hide {
+  visibility: hidden;
+}
+.remove {
+  display: none !important;
+}
 .center-horizontal {
   text-align: center;
   margin: 0 auto;
@@ -60,6 +69,9 @@ body {
   .main .dbl-wrapper .dbl-icon {
     margin-top: 10px;
   }
+}
+.loading-bar {
+  margin: 30vh auto 0 auto;
 }
 .header {
   background: #004e5e;

@@ -1,9 +1,7 @@
-angular.module('ambrosia').controller('StockCtrl', function ($scope, $state, $stateParams, $location, $window, seQuotes)
+angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope, $state, $stateParams, $location, $window, seQuotes)
 {
-    console.log($state)
-    console.log($location)
-    console.log($window)
-    console.log(chance.string())
+
+    $rootScope.loading = true;
 
     $scope.ctrl = {
         period : 'd',
@@ -31,6 +29,7 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $state, $st
     }
 
     if ('ticker' in $stateParams) {
+
         $scope.ctrl.tickerAbbrv = $stateParams.ticker
 
         seQuotes.getCompany($scope.ctrl.tickerAbbrv).then(function(company){
@@ -69,6 +68,7 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $state, $st
                 { key : 'Transaction Price:', value : "$" + transaction },
                 { key : 'Adj. Transaction Price:', value : "$" + adj }
               ]
+              checkLoaded()
            })
         })
 
@@ -94,6 +94,13 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $state, $st
                     data: seQuotes.convertHighcharts($scope.ctrl.data)
                 }]
             });
+            checkLoaded()
         })
+    }
+
+    function checkLoaded() {
+        if ($scope.ctrl.data.length > 0 && $scope.ctrl.company.stockUserDetails.length > 0) {
+            $rootScope.loading = false
+        }
     }
 })

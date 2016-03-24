@@ -1,5 +1,7 @@
-angular.module('ambrosia').controller('MainCtrl', function ($scope, seQuotes)
+angular.module('ambrosia').controller('MainCtrl', function ($scope, $rootScope, seQuotes)
 {
+    $rootScope.loading = true;
+
     $scope.ctrl = {
         size : 50,
         list : {},
@@ -11,6 +13,7 @@ angular.module('ambrosia').controller('MainCtrl', function ($scope, seQuotes)
        list = _.sortBy(_.map(list, function(pick){ return pick }), function(pick){ return -pick.invested }).splice(0,50)
        console.log(list)
        $scope.ctrl.list = list
+       $rootScope.loading = false
     })
 
 })

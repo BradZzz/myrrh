@@ -57,7 +57,11 @@
   <body ng-controller="RootCtrl">
 
     <!-- angular view content injected here -->
-    <div id='content' ui-view></div>
+    <div id="navbar" ng-controller="HeaderCtrl"><div ng-include src="'assets/html/partials/header.html'"></div></div>
+    <div class="loading-bar" ng-class="{'show' : $root.loading, 'remove' : !$root.loading}" layout="row" layout-sm="column" layout-align="space-around">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+    <div id='content' ui-view ng-class="{'show' : !$root.loading, 'hide' : $root.loading}"></div>
 
     <div id="scripts">
       <!-- angular dependencies -->
