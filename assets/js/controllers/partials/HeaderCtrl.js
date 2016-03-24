@@ -9,7 +9,7 @@ angular.module('ambrosia').controller('HeaderCtrl', function ($scope, $state, $t
     states : [],
     querySearch : function (query) {
         if (query) {
-            return _.filter($scope.ctrl.states, function(tick){ return tick.value.substring(0, query.length) == query }).splice(0, 25)
+            return _.filter($scope.ctrl.states, function(tick){ return tick.value.substring(0, query.length) == query }).splice(0, 15)
         } else {
             return []
         }
