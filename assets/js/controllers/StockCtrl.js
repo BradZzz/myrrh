@@ -77,22 +77,13 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope,
             console.log(seQuotes.convertHighcharts($scope.ctrl.data))
 
             $('#container').highcharts('StockChart', {
-                chart: {
-                    type: 'columnrange'
-                },
-                rangeSelector: {
-                    selected: 2
-                },
-                title: {
-                    text: ''
-                },
-                tooltip: {
-                    valuePrefix: '$'
-                },
-                series: [{
-                    name: 'Prices',
-                    data: seQuotes.convertHighcharts($scope.ctrl.data)
-                }]
+                exporting: { enabled: false },
+                chart: { type: 'columnrange', backgroundColor: null },
+                rangeSelector: { selected: 2 },
+                yAxis: { labels : { enabled : false }},
+                title: { text: '' },
+                tooltip: { valuePrefix: '$' },
+                series: [{ name: 'Prices', data: seQuotes.convertHighcharts($scope.ctrl.data) }]
             });
             checkLoaded()
         })
