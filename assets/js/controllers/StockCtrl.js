@@ -14,22 +14,17 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope,
             if (this.invested < 0) {
                 this.invested = 0
             }
+
             this.cost = (this.ask * this.invested).toFixed(2)
 
             this.company.stockUserDetails.invested.value = this.invested + this.company.stockUserDetails.invested.cache
-
-            console.log('invest', this.company.stockUserDetails.invested.value)
-            console.log('invest2', $scope.ctrl.company.stockUserDetails.invested.value)
 
             this.company.stockUserDetails.adj.cache = this.company.stockUserDetails.adj.calc(
                 this.company.stockUserDetails.transaction.cache , this.company.stockUserDetails.invested.value
             )
 
-            console.log('adj', this.company.stockUserDetails.adj.cache)
-
             this.company.stockUserDetails.adj.value = '$' + this.company.stockUserDetails.adj.cache
 
-            console.log('adj.value', this.company.stockUserDetails.adj.value)
             return
         },
         actions : {
