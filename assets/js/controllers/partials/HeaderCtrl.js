@@ -13,8 +13,9 @@ angular.module('ambrosia').controller('HeaderCtrl', function ($scope, $state, $t
         }
     },
     selectedItemChange : function (item) {
-       console.log('Item changed to ' + JSON.stringify(item));
-       $state.go('stock', { ticker: item.value.toUpperCase() });
+        if ('value' in item) {
+          $state.go('stock', { ticker: item.value.toUpperCase() })
+        }
     },
     searchTextChange : function (text) {
       console.log('Text changed to ' + text);
@@ -50,8 +51,8 @@ angular.module('ambrosia').controller('HeaderCtrl', function ($scope, $state, $t
         'assets/img/backgrounds/wall_9.png','assets/img/backgrounds/wall_10.png','assets/img/backgrounds/wall_11.png']
   }
 
-  seQuotes.getList().then(function(response){
-      var tickers = _.union(response[0].data, response[1].data)
+  seQuotes.getTestList().then(function(response){
+      var tickers = _.map(response, function(num, key){ return key })
       console.log(tickers.length)
 
       $scope.ctrl.states = _.map( _.sortBy( tickers, function( tick ){ return tick }) , function (tick) {
@@ -60,6 +61,8 @@ angular.module('ambrosia').controller('HeaderCtrl', function ($scope, $state, $t
            display: tick
          }
       })
+
+      console.log(tickers.length)
   })
 
   $scope.toggleRight = buildToggler('left')

@@ -15,6 +15,21 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope,
                 this.invested = 0
             }
             this.cost = (this.ask * this.invested).toFixed(2)
+
+            this.company.stockUserDetails.invested.value = this.invested + this.company.stockUserDetails.invested.cache
+
+            console.log('invest', this.company.stockUserDetails.invested.value)
+            console.log('invest2', $scope.ctrl.company.stockUserDetails.invested.value)
+
+            this.company.stockUserDetails.adj.cache = this.company.stockUserDetails.adj.calc(
+                this.company.stockUserDetails.transaction.cache , this.company.stockUserDetails.invested.value
+            )
+
+            console.log('adj', this.company.stockUserDetails.adj.cache)
+
+            this.company.stockUserDetails.adj.value = '$' + this.company.stockUserDetails.adj.cache
+
+            console.log('adj.value', this.company.stockUserDetails.adj.value)
             return
         },
         actions : {
@@ -70,12 +85,16 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope,
               })
               var invested = companyList.invested
               var transaction = companyList.buyFee
-              var adj = (parseFloat(transaction) / parseFloat(invested)).toFixed(2)
-              $scope.ctrl.company.stockUserDetails = [
-                { key : 'Users Invested:', value : invested },
-                { key : 'Transaction Price:', value : "$" + transaction },
-                { key : 'Adj. Transaction Price:', value : "$" + adj }
-              ]
+              var calc = function (transaction, invested) {
+                console.log("calc", transaction, invested, (parseFloat(transaction) / parseFloat(invested)).toFixed(2))
+                return (parseFloat(transaction) / parseFloat(invested)).toFixed(2)
+              }
+              var adj = calc(transaction, invested)
+              $scope.ctrl.company.stockUserDetails = {
+                invested : { key : 'Users Invested:', value : invested, cache : invested },
+                transaction : { key : 'Transaction Price:', value : "$" + transaction, cache : transaction },
+                adj : { key : 'Adj. Transaction Price:', value : "$" + adj, cache : adj, calc : calc },
+              }
               checkLoaded()
            })
         })
@@ -98,7 +117,7 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope,
     }
 
     function checkLoaded() {
-        if ('stockUserDetails' in $scope.ctrl.company && 'data' in $scope.ctrl && $scope.ctrl.data.length > 0 && $scope.ctrl.company.stockUserDetails.length > 0) {
+        if ('stockUserDetails' in $scope.ctrl.company && 'data' in $scope.ctrl && $scope.ctrl.data.length > 0 && Object.keys($scope.ctrl.company.stockUserDetails).length > 0) {
             $rootScope.loading = false
         }
     }

@@ -3,7 +3,7 @@
 		<md-content style="margin: 10px 20px 0 20px;">
 			<h3>{{ ctrl.company.name }} ({{ ctrl.company.abbr }})</h3>
 			<div layout-gt-sm="row" layout="column" style="margin: 10px 0;">
-				<span ng-repeat="detail in ctrl.company.stockUserDetails" style="margin-right: 30px;">
+				<span ng-repeat="(key, detail) in ctrl.company.stockUserDetails" style="margin-right: 30px;">
 					<b>{{ detail.key }}</b> {{ detail.value }}
 				</span>
 			</div>

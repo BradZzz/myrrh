@@ -44,17 +44,20 @@ angular.module('ambrosia').service('seQuotes', function ($http, $q)
 
   self.getTestList = function () {
       if ('getTestList' in self.cache) {
+        console.log('getTestList cache')
         var deferred = $q.defer()
         deferred.resolve(self.cache.getTestList)
+        console.log(self.cache.getTestList)
         return deferred.promise
       } else {
         return $http({
           url: '/stock/testList',
           method: 'GET',
         }).then(function (response) {
-          console.log('getTestList')
+          console.log('getTestList new')
           self.print(response)
           self.cache.getTestList = response.data
+          console.log(self.cache.getTestList)
           return response.data
         })
       }

@@ -25,14 +25,12 @@ app.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
     .state('home', {
       url: "/",
       templateUrl: "/assets/html/home/main.html",
-      controller: "MainCtrl",
-      //access: role['admin']
+      controller: "MainCtrl"
     })
     .state('stock', {
       url: "/stockui?ticker",
       templateUrl: "/assets/html/home/stock.html",
-      controller: "StockCtrl",
-      //access: role['admin']
+      controller: "StockCtrl"
     })
 
   $locationProvider.html5Mode(true)
@@ -40,6 +38,7 @@ app.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
 
 app.run(function ($rootScope) {
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+    console.log("state", toState, toParams, fromState, fromParams)
     /*if (!$rootScope.auth) {
       $location.path('/login')
     } else {
