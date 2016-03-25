@@ -11,7 +11,7 @@
 				<div>
 					<span style="margin-bottom:5px;"><b>Current:</b> <span style="font-style: italic;font-weight: 400;">Shares</span> {{ ctrl.invested }}
 						/ <span style="font-style: italic;font-weight: 400;">Cost</span> ${{ ctrl.cost }}</span>
-					<md-button style="min-width: 24px; height: 18px; background: rgba(232,232,0,.3); border: 1px solid #000;">
+					<md-button ng-click="ctrl.invested = 0;ctrl.invest(0);" style="min-width: 24px; height: 18px; background: rgba(232,232,0,.3); border: 1px solid #000;">
 						<md-icon flex class="md-secondary icon ion-refresh" style="vertical-align: top;"></md-icon>
 					</md-button>
 				</div>
