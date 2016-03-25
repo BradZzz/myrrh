@@ -5,7 +5,20 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope,
 
     $scope.ctrl = {
         period : 'd',
+        ask : 0,
+        invested : 0,
+        cost : 0,
+        invest : function (amount) {
+            var timesy = this.actions.plus ? 1 : -1
+            this.invested += timesy * amount
+            if (this.invested < 0) {
+                this.invested = 0
+            }
+            this.cost = (this.ask * this.invested).toFixed(2)
+            return
+        },
         actions : {
+            plus: true,
             commentEx : false,
             commentIcon : function (expanded) {
                 return expanded ? 'ion-chevron-down' : 'ion-chevron-up'
@@ -33,6 +46,7 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope,
         $scope.ctrl.tickerAbbrv = $stateParams.ticker
 
         seQuotes.getCompany($scope.ctrl.tickerAbbrv).then(function(company){
+           $scope.ctrl.ask = company.ask
            $scope.ctrl.company = {
             name : company.name,
             abbr : company.symbol,
@@ -47,12 +61,6 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope,
               console.log(list)
               var companyList = list[$scope.ctrl.tickerAbbrv]
               console.log(companyList)
-              /*
-                                  comments.push({
-                                      user: chance.word({syllables: chance.integer({min: 1, max: 10})}),
-                                      text: chance.paragraph({sentences: chance.integer({min: 1, max: 3})})
-                                  })
-              */
               $scope.ctrl.company.comments = _.map(companyList.comments,
                 function(comment){ return {
                     photo: $scope.ctrl.actions.commentUserBase + $scope.ctrl.actions.commentUsers[chance.integer({ min: 0, max: companyList.comments.length - 1 })],

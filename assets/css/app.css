@@ -14,7 +14,8 @@
  */
 @import url('//fonts.googleapis.com/css?family=Oxygen:400,700');
 /* Colors */
-/* Colors Using */
+/* Button Colors */
+/* Hues Using */
 body {
   font-family: 'Oxygen' "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
@@ -49,6 +50,12 @@ body {
 }
 .remove {
   display: none !important;
+}
+.green {
+  background: rgba(37, 148, 107, 0.3) !important;
+}
+.red {
+  background: rgba(176, 28, 48, 0.3) !important;
 }
 .center-horizontal {
   text-align: center;
@@ -88,4 +95,15 @@ body {
 }
 .main .dbl-wrapper .dbl-icon {
   text-align: center;
+}
+.stock .tiny {
+  max-height: 28px;
+  min-height: 28px;
+  min-width: 24px;
+  border: 1px solid #000;
+}
+.stock .tiny span {
+  position: absolute;
+  bottom: -15%;
+  left: 30%;
 }

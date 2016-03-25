@@ -9,7 +9,11 @@
 @hue-3:   #35948d;
 @hue-4:   #057e75;
 
-/* Colors Using */
+/* Button Colors */
+@red-trans:   rgba(176,28,48,.3);
+@green-trans:   rgba(37,148,107,.3);
+
+/* Hues Using */
 @hue-5:   #082742;
 
 body {
@@ -52,6 +56,13 @@ html, body {
 
 .remove {
     display : none !important;
+}
+
+.green {
+    background: @green-trans !important;
+}
+.red {
+    background: @red-trans !important;
 }
 
 .center-horizontal {
@@ -98,6 +109,20 @@ html, body {
         font-size:18px;
         .dbl-icon {
             text-align:center;
+        }
+    }
+}
+
+.stock {
+    .tiny {
+        max-height: 28px;
+        min-height: 28px;
+        min-width: 24px;
+        border: 1px solid #000;
+        span {
+            position: absolute;
+            bottom: -15%;
+            left: 30%;
         }
     }
 }

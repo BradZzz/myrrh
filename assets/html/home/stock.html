@@ -1,4 +1,4 @@
-<div>
+<div class="stock">
 	<md-card style="height:75vh;">
 		<md-content style="margin: 10px 20px 0 20px;">
 			<h3>{{ ctrl.company.name }} ({{ ctrl.company.abbr }})</h3>
@@ -8,15 +8,21 @@
 				</span>
 			</div>
 			<div layout="column">
-				<span style="margin-bottom:5px;"><b>Current:</b> <b>Shares</b> 0 / <b>Cost</b> $0.00</span>
+				<div>
+					<span style="margin-bottom:5px;"><b>Current:</b> <span style="font-style: italic;font-weight: 400;">Shares</span> {{ ctrl.invested }}
+						/ <span style="font-style: italic;font-weight: 400;">Cost</span> ${{ ctrl.cost }}</span>
+					<md-button style="min-width: 24px; height: 18px; background: rgba(232,232,0,.3); border: 1px solid #000;">
+						<md-icon flex class="md-secondary icon ion-refresh" style="vertical-align: top;"></md-icon>
+					</md-button>
+				</div>
 				<div layout="row">
 					<div flex layout="column" style="max-width: 32px;">
-						<md-button style="min-width: 24px; background: rgba(37,148,107,.3); border: 1px solid #000;">+</md-button>
-						<md-button style="min-width: 24px; background: rgba(176,28,48,.3); border: 1px solid #000;">-</md-button>
+						<md-button ng-click="ctrl.actions.plus = true" class="tiny green">+</md-button>
+						<md-button ng-click="ctrl.actions.plus = false" class="tiny red">-</md-button>
 					</div>
-					<md-button style="background: rgba(37,148,107,.3); border: 1px solid #000;margin-left:20px;">.25</md-button>
-					<md-button style="background: rgba(37,148,107,.3); border: 1px solid #000;">.50</md-button>
-					<md-button style="background: rgba(37,148,107,.3); border: 1px solid #000;">1</md-button>
+					<md-button ng-click="ctrl.invest(.25)" ng-class="{ 'green' : ctrl.actions.plus, 'red' : !ctrl.actions.plus  }" style="border: 1px solid #000;margin-left:20px;">.25</md-button>
+					<md-button ng-click="ctrl.invest(.5)" ng-class="{ 'green' : ctrl.actions.plus, 'red' : !ctrl.actions.plus  }" style="border: 1px solid #000;">.50</md-button>
+					<md-button ng-click="ctrl.invest(1)" ng-class="{ 'green' : ctrl.actions.plus, 'red' : !ctrl.actions.plus  }" style="border: 1px solid #000;">1</md-button>
 				</div>
 			</div>
 			<div layout-gt-sm="row" layout="column" style="margin:10px 0">
