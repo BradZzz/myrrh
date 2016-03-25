@@ -74,7 +74,8 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope,
            seQuotes.getTestList().then(function(list){
               console.log('finished')
               console.log(list)
-              var companyList = list[$scope.ctrl.tickerAbbrv]
+              console.log(_.find(list, function(tick){ return tick.ticker == $scope.ctrl.tickerAbbrv }))
+              var companyList = _.find(list, function(tick){ return tick.ticker == $scope.ctrl.tickerAbbrv })
               console.log(companyList)
               $scope.ctrl.company.comments = _.map(companyList.comments,
                 function(comment){ return {

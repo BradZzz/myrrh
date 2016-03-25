@@ -13,7 +13,7 @@ angular.module('ambrosia').controller('HeaderCtrl', function ($scope, $state, $t
         }
     },
     selectedItemChange : function (item) {
-        if ('value' in item) {
+        if (item && 'value' in item) {
           $state.go('stock', { ticker: item.value.toUpperCase() })
         }
     },
@@ -52,13 +52,11 @@ angular.module('ambrosia').controller('HeaderCtrl', function ($scope, $state, $t
   }
 
   seQuotes.getTestList().then(function(response){
-      var tickers = _.map(response, function(num, key){ return key })
-      console.log(tickers.length)
-
+      var tickers = _.map(response, function(num){ return num })
       $scope.ctrl.states = _.map( _.sortBy( tickers, function( tick ){ return tick }) , function (tick) {
          return {
-           value: tick.toLowerCase(),
-           display: tick
+           value: tick.ticker.toLowerCase(),
+           display: tick.ticker
          }
       })
 
