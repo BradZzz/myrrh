@@ -35,8 +35,16 @@ gulp.task('build', [ 'clean' ], function () {
   gulp.start('deploy')
 })
 
-gulp.task('deploy', [ 'minify', 'img', 'partials', 'styles' ], function () {
+gulp.task('deploy', [ 'minify', 'img', 'partials', 'styles', 'fonts' ], function () {
     console.log('consolidated')
+})
+
+gulp.task('fonts', function () {
+  return gulp.src([
+    'assets/third-party/ionicons/fonts/*'
+  ]).pipe($.filter('**/*.{eot,svg,ttf,woff}'))
+    .pipe($.flatten())
+    .pipe(gulp.dest('dist/build/fonts'))
 })
 
 gulp.task('minify', function() {
