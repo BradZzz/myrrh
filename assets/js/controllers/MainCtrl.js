@@ -11,7 +11,16 @@ angular.module('ambrosia').controller('MainCtrl', ['$scope', '$rootScope', 'seQu
 
     seQuotes.getTestList().then(function(list){
        console.log('finished')
-       list = _.sortBy(_.map(list, function(pick){ return pick }), function(pick){ return -pick.invested }).splice(0,50)
+       var newList = []
+       list = _.map(list, function(pick){ return pick })
+
+       while (newList.length < $scope.ctrl.size) {
+            var index = chance.integer({min: 0, max: list.length - 1})
+            newList.push(list[index])
+            list.splice(index, 1)
+       }
+
+       list = _.sortBy( newList , function(pick){ return -pick.invested })
        console.log(list)
        $scope.ctrl.list = list
        $rootScope.loading = false
