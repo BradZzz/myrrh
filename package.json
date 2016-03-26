@@ -4,6 +4,7 @@
   "dependencies": {
     "async": "^1.5.2",
     "body-parser": "~1.4.2",
+    "bower": "^1.7.7",
     "chance": "^1.0.1",
     "compression": "^1.6.1",
     "cookie-parser": "^1.4.1",
@@ -53,7 +54,7 @@
     "yahoo-finance": "^0.2.12"
   },
   "scripts": {
-    "test": "node app.js",
-    "start": "npm install && bower install && gulp build && node app.js"
+    "start": "node app.js",
+    "postinstall": "./node_modules/bower/bin/bower install && grunt build"
   }
 }
