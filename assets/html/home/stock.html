@@ -1,5 +1,5 @@
 <div class="stock">
-	<md-card style="height:75vh;">
+	<md-card class="content">
 		<md-content style="margin: 10px 20px 0 20px;">
 			<h3>{{ ctrl.company.name }} ({{ ctrl.company.abbr }})</h3>
 			<div layout-gt-sm="row" layout="column" style="margin: 10px 0;">
@@ -16,13 +16,13 @@
 					</md-button>
 				</div>
 				<div layout="row">
-					<div flex layout="column" style="max-width: 32px;">
+					<div class="tiny-wrapper" flex layout-gt-sm="column" layout="row" style="max-width: 32px; margin-right:10px;">
 						<md-button ng-click="ctrl.actions.plus = true" class="tiny green">+</md-button>
 						<md-button ng-click="ctrl.actions.plus = false" class="tiny red">-</md-button>
 					</div>
-					<md-button ng-click="ctrl.invest(.25)" ng-class="{ 'green' : ctrl.actions.plus, 'red' : !ctrl.actions.plus  }" style="border: 1px solid #000;margin-left:20px;">.25</md-button>
-					<md-button ng-click="ctrl.invest(.5)" ng-class="{ 'green' : ctrl.actions.plus, 'red' : !ctrl.actions.plus  }" style="border: 1px solid #000;">.50</md-button>
-					<md-button ng-click="ctrl.invest(1)" ng-class="{ 'green' : ctrl.actions.plus, 'red' : !ctrl.actions.plus  }" style="border: 1px solid #000;">1</md-button>
+					<md-button class="large" ng-click="ctrl.invest(.25)" ng-class="{ 'green' : ctrl.actions.plus, 'red' : !ctrl.actions.plus  }">.25</md-button>
+					<md-button class="large" ng-click="ctrl.invest(.5)" ng-class="{ 'green' : ctrl.actions.plus, 'red' : !ctrl.actions.plus  }">.50</md-button>
+					<md-button class="large" ng-click="ctrl.invest(1)" ng-class="{ 'green' : ctrl.actions.plus, 'red' : !ctrl.actions.plus  }">1</md-button>
 				</div>
 			</div>
 			<div layout-gt-sm="row" layout="column" style="margin:10px 0">

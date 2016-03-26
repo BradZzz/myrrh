@@ -77,6 +77,28 @@ body {
   .main .dbl-wrapper .dbl-icon {
     margin-top: 10px;
   }
+  .stock .content {
+    height: 95vh !important;
+  }
+  .stock .tiny-wrapper {
+    padding-top: 3px;
+    max-width: 90px !important;
+  }
+  .stock .tiny-wrapper .tiny {
+    min-width: 32px !important;
+    min-height: 32px !important;
+  }
+  .stock .tiny-wrapper .tiny span {
+    position: absolute !important;
+    bottom: -5% !important;
+    left: 37% !important;
+  }
+  .stock .large {
+    max-width: 38px;
+    min-width: 38px;
+    max-height: 38px;
+    min-height: 38px;
+  }
 }
 .loading-bar {
   margin: 30vh auto 0 auto;
@@ -96,13 +118,23 @@ body {
 .main .dbl-wrapper .dbl-icon {
   text-align: center;
 }
-.stock .tiny {
+.stock .content {
+  height: 75vh;
+}
+.stock .large {
+  border: 1px solid #000;
+}
+.stock .tiny-wrapper {
+  max-width: 32px;
+  margin-right: 10px;
+}
+.stock .tiny-wrapper .tiny {
   max-height: 28px;
   min-height: 28px;
   min-width: 24px;
   border: 1px solid #000;
 }
-.stock .tiny span {
+.stock .tiny-wrapper .tiny span {
   position: absolute;
   bottom: -15%;
   left: 30%;
