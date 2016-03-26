@@ -1,6 +1,6 @@
 angular.module('ambrosia').controller('HeaderCtrl',
-['$scope', '$state', '$timeout', '$mdSidenav', '$log', 'seQuotes',
-function ($scope, $state, $timeout, $mdSidenav, $log, seQuotes)
+['$scope', '$state', '$timeout', '$mdSidenav', '$log', 'seQuotes', 'seUser',
+function ($scope, $state, $timeout, $mdSidenav, $log, seQuotes, seUser)
 {
 
   $scope.ctrl = {
@@ -25,12 +25,7 @@ function ($scope, $state, $timeout, $mdSidenav, $log, seQuotes)
     newState : function (state) {
       alert("Sorry! You'll need to create a Constituion for " + state + " first!");
     },
-    test : {
-        image : 'assets/img/test/test_user.png',
-        name : 'Geoff Test',
-        email : 'geoffrey.test@gmail.com',
-        background : 4,
-    },
+    test : seUser.user,
     nav : [
         { icon : 'ion-android-home', text : 'Home', click : function(){console.log("clicked home")} },
         { icon : 'ion-folder', text : 'Profile', click : function(){console.log("clicked profile")} },

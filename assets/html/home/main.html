@@ -12,7 +12,8 @@
 				</div>
 				<div flex-offset="10" flex-offset-gt-sm="5" flex-gt-sm="75" flex="60" class="center-vertical" style="position:relative;">
 					<div layout="row" style="position:absolute;top:0;left:0;margin-top: 10px;">
-						<span flex>{{ page.ticker }}</span>
+						<span flex>{{ page.info.name }}</span>
+						<span flex>({{ page.ticker }})</span>
 					</div>
 					<div layout="row" style="position:absolute;bottom:0;left:0;font-size: 12px;font-weight: bold;margin-bottom: 10px;">
 						<span style="margin-right:20px;">{{ page.comments.length }} Comments</span>

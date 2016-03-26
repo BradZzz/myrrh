@@ -208,6 +208,8 @@ function ($http)
      maskColor: 'rgba(255,255,255,0.3)'
   };
 
+  self.main = []
+
   self.print = function (response) {
     console.log(self.logName + " response: ", response)
   }
