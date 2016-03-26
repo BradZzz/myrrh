@@ -16,6 +16,7 @@
     "fast-csv": "^1.0.0",
     "fs": "0.0.2",
     "grunt": "^0.4.5",
+    "grunt-cli": "^1.1.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-clean-css": "^2.0.4",
