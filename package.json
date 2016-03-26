@@ -54,6 +54,6 @@
   },
   "scripts": {
     "test": "node app.js",
-    "start": "gulp build && node app.js"
+    "start": "npm install && bower install && gulp build && node app.js"
   }
 }
