@@ -17,7 +17,9 @@ var role = {
 
 var app = angular.module('ambrosia', modules)
 
-app.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
+app.config(
+['$locationProvider', '$stateProvider', '$urlRouterProvider',
+function ($locationProvider, $stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise("/")
 
@@ -34,9 +36,11 @@ app.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
     })
 
   $locationProvider.html5Mode(true)
-})
+}])
 
-app.run(function ($rootScope) {
+app.run(
+['$rootScope',
+function ($rootScope) {
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
     console.log("state", toState, toParams, fromState, fromParams)
     /*if (!$rootScope.auth) {
@@ -61,9 +65,10 @@ app.run(function ($rootScope) {
       })
     }*/
   })
-});
+}]);
 
-app.config(function ($mdThemingProvider) {
+app.config(['$mdThemingProvider',
+function ($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('blue')
     .accentPalette('orange')
@@ -73,4 +78,4 @@ app.config(function ($mdThemingProvider) {
       'hue-2': '100',
       'hue-3': '200'
     })
-});
+}]);

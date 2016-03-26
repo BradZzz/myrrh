@@ -1,4 +1,6 @@
-angular.module('ambrosia').controller('HeaderCtrl', function ($scope, $state, $timeout, $mdSidenav, $log, seQuotes)
+angular.module('ambrosia').controller('HeaderCtrl',
+['$scope', '$state', '$timeout', '$mdSidenav', '$log', 'seQuotes',
+function ($scope, $state, $timeout, $mdSidenav, $log, seQuotes)
 {
 
   $scope.ctrl = {
@@ -98,11 +100,13 @@ angular.module('ambrosia').controller('HeaderCtrl', function ($scope, $state, $t
         });
     }
   }
-}).controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+}]).controller('LeftCtrl',
+['$scope', '$timeout', '$mdSidenav', '$log',
+function ($scope, $timeout, $mdSidenav, $log) {
     $scope.close = function () {
       $mdSidenav('left').close()
         .then(function () {
           $log.debug("close left is done");
         });
     };
-});
+}]);

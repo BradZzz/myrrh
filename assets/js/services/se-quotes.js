@@ -1,4 +1,6 @@
-angular.module('ambrosia').service('seQuotes', function ($http, $q)
+angular.module('ambrosia').service('seQuotes',
+['$http', '$q',
+function ($http, $q)
 {
   var self = this
   self.logName = 'seQuotes'
@@ -96,4 +98,4 @@ angular.module('ambrosia').service('seQuotes', function ($http, $q)
     console.log(self.logName + " response: ", response)
   }
 
-});
+}]);

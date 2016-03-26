@@ -1,4 +1,5 @@
-angular.module('ambrosia').controller('MainCtrl', function ($scope, $rootScope, seQuotes)
+angular.module('ambrosia').controller('MainCtrl', ['$scope', '$rootScope', 'seQuotes',
+ function ($scope, $rootScope, seQuotes)
 {
     $rootScope.loading = true;
 
@@ -16,4 +17,4 @@ angular.module('ambrosia').controller('MainCtrl', function ($scope, $rootScope, 
        $rootScope.loading = false
     })
 
-})
+}])

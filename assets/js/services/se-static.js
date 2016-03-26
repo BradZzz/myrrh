@@ -1,4 +1,6 @@
-angular.module('ambrosia').service('seStatic', function ($http)
+angular.module('ambrosia').service('seStatic',
+['$http',
+function ($http)
 {
   var self = this
   self.logName = 'seStatic'
@@ -210,4 +212,4 @@ angular.module('ambrosia').service('seStatic', function ($http)
     console.log(self.logName + " response: ", response)
   }
 
-});
+}]);

@@ -1,5 +1,5 @@
-angular.module('ambrosia').controller('RootCtrl', function (
-  $rootScope, $state, $stateParams, $timeout, cfpLoadingBar)
+angular.module('ambrosia').controller('RootCtrl', ['$rootScope', '$state', '$stateParams',
+'$timeout', 'cfpLoadingBar', function ($rootScope, $state, $stateParams, $timeout, cfpLoadingBar)
 {
   $rootScope.safeApply = function (fn) {
     var $root = this.$root
@@ -59,4 +59,4 @@ angular.module('ambrosia').controller('RootCtrl', function (
       // this is required if you want to prevent the $UrlRouter reverting the URL to the previous valid location
       event.preventDefault();
   })
-});
+}]);

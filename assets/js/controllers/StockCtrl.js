@@ -1,4 +1,6 @@
-angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope, $state, $stateParams, $location, $window, seQuotes)
+angular.module('ambrosia').controller('StockCtrl',
+['$scope', '$rootScope', '$state', '$stateParams', '$location', '$window', 'seQuotes',
+function ($scope, $rootScope, $state, $stateParams, $location, $window, seQuotes)
 {
 
     $rootScope.loading = true;
@@ -117,4 +119,4 @@ angular.module('ambrosia').controller('StockCtrl', function ($scope, $rootScope,
             $rootScope.loading = false
         }
     }
-})
+}])

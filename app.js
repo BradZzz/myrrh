@@ -33,11 +33,11 @@ var templateConfig = {
   extname: '.html',
 }
 
-if (app.get('prod')) {
+//if (app.get('prod')) {
   templateConfig.partialsDir = path.join(__dirname, 'dist')
-} else {
-  templateConfig.partialsDir = __dirname
-}
+//} else {
+//  templateConfig.partialsDir = __dirname
+//}
 
 app.engine('html', exphbs(templateConfig))
 app.set('view engine', 'html')
@@ -69,7 +69,6 @@ if (app.get('prod')) {
 // setup routes
 require('./router/routes/stock')(app)
 require('./router/routes/views')(app)
-//require('./router')(app)
 
 app.listen(app.get('port'), function () {
   console.log("Express listening at localhost:" + app.get('port'))
