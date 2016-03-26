@@ -53,6 +53,7 @@
     "yahoo-finance": "^0.2.12"
   },
   "scripts": {
-    "start": "node app.js"
+    "test": "node app.js",
+    "start": "gulp build && node app.js"
   }
 }
