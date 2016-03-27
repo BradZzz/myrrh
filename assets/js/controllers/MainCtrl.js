@@ -21,8 +21,11 @@ angular.module('ambrosia').controller('MainCtrl',
 
            while (newList.length < $scope.ctrl.size) {
                 var index = chance.integer({min: 0, max: list.length - 1})
-                newList.push(list[index])
-                list.splice(index, 1)
+                console.log(list[index].ticker)
+                if ((list[index].ticker).indexOf('^') === -1) {
+                    newList.push(list[index])
+                    list.splice(index, 1)
+                }
            }
 
            /* Here we need to query each of these stocks for its info */
@@ -54,6 +57,9 @@ angular.module('ambrosia').controller('MainCtrl',
                 "stockExchange":"NMS","dividendYield":1.95}*/
                 var newStock = stock
                 newStock.info = result
+                if (newStock.info.change === null) {
+                    newStock.info.change = 0
+                }
                 deferred.resolve(newStock)
                 return deferred.promise
              }))

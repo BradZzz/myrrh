@@ -115,6 +115,7 @@ function ($scope, $rootScope, $state, $stateParams, $location, $window, seQuotes
     }
 
     function checkLoaded() {
+        console.log("Checking loaded")
         if ('stockUserDetails' in $scope.ctrl.company && 'data' in $scope.ctrl && $scope.ctrl.data.length > 0 && Object.keys($scope.ctrl.company.stockUserDetails).length > 0) {
             $rootScope.loading = false
         }

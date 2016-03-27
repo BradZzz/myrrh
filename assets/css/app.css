@@ -51,11 +51,17 @@ body {
 .remove {
   display: none !important;
 }
-.green {
+.background.green {
   background: rgba(37, 148, 107, 0.3) !important;
 }
-.red {
+.background.red {
   background: rgba(176, 28, 48, 0.3) !important;
+}
+.color.red {
+  color: rgba(207, 23, 84, 0.8) !important;
+}
+.color.green {
+  color: rgba(29, 207, 23, 0.8) !important;
 }
 .center-horizontal {
   text-align: center;
