@@ -63,6 +63,9 @@ body {
 .color.green {
   color: rgba(29, 207, 23, 0.8) !important;
 }
+.color.blue {
+  color: rgba(77, 166, 196, 0.8) !important;
+}
 .center-horizontal {
   text-align: center;
   margin: 0 auto;
@@ -79,6 +82,9 @@ body {
 @media screen and (max-width: 600px) {
   .header .nav-icons .nav-home {
     margin-right: 30px !important;
+  }
+  .main .stock-title {
+    font-size: 12px !important;
   }
   .main .dbl-wrapper .dbl-icon {
     margin-top: 10px;

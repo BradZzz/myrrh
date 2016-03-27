@@ -15,6 +15,7 @@
 
 @red-full:   rgba(207,23,84,.8);
 @green-full:   rgba(29,207,23,.8);
+@blue-full:   rgba(77,166,196,.8);
 
 /* Hues Using */
 @hue-5:   #082742;
@@ -77,6 +78,9 @@ html, body {
     &.green {
         color : @green-full !important;
     }
+    &.blue {
+        color : @blue-full !important;
+    }
 }
 
 .center-horizontal {
@@ -99,8 +103,13 @@ html, body {
     .header .nav-icons .nav-home {
         margin-right: 30px !important;
     }
-    .main .dbl-wrapper .dbl-icon {
-        margin-top: 10px;
+    .main {
+        .stock-title {
+            font-size: 12px !important;
+        }
+        .dbl-wrapper .dbl-icon {
+            margin-top: 10px;
+        }
     }
     .stock {
         .content {
