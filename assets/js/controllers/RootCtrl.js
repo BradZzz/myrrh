@@ -13,6 +13,10 @@ angular.module('ambrosia').controller('RootCtrl', ['$rootScope', '$state', '$sta
     }
   }
 
+  $rootScope.alert = function (message) {
+      alert(message)
+  }
+
   // Returns the version of Internet Explorer
   function getIsIE () {
     var ua = window.navigator.userAgent

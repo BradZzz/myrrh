@@ -7,10 +7,7 @@ angular.module('ambrosia').controller('MainCtrl',
     $scope.ctrl = {
         size : 25,
         list : {},
-        links : ['share', 'save', 'hide', 'report'],
-        alert : function (message) {
-            alert(message)
-        }
+        links : ['share', 'save', 'hide', 'report']
     }
 
     if (seStatic.main.length > 0) {

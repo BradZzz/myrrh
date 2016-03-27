@@ -3,8 +3,9 @@
 		<md-content style="margin: 10px 20px 0 20px;">
 			<h3>{{ ctrl.company.name }} ({{ ctrl.company.abbr }})</h3>
 			<div layout-gt-sm="row" layout="column" style="margin: 10px 0;">
-				<span ng-repeat="(key, detail) in ctrl.company.stockUserDetails" style="margin-right: 30px;">
+				<span ng-repeat="(key, detail) in ctrl.company.stockUserDetails" style="margin-right: 30px;position:relative;">
 					<b>{{ detail.key }}</b> {{ detail.value }}
+					<md-icon flex class="md-secondary icon ion-help-circled selectable" style="top: -11px; position: absolute; right: -25px;" ng-click="$root.alert(detail.desc)"></md-icon>
 				</span>
 			</div>
 			<div layout="column">

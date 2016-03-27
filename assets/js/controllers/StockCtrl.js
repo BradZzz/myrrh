@@ -89,9 +89,9 @@ function ($scope, $rootScope, $state, $stateParams, $location, $window, seQuotes
               }
               var adj = calc(transaction, invested)
               $scope.ctrl.company.stockUserDetails = {
-                invested : { key : 'Users Invested:', value : invested, cache : invested },
-                transaction : { key : 'Transaction Price:', value : "$" + transaction, cache : transaction },
-                adj : { key : 'Adj. Transaction Price:', value : "$" + adj, cache : adj, calc : calc },
+                invested : { desc: 'The number of users investing in this stock', key : 'Users Invested:', value : invested, cache : invested },
+                transaction : { desc: 'The cost to normally purchase this stock', key : 'Transaction Price:', value : "$" + transaction, cache : transaction },
+                adj : { desc: 'The cost that you pay to purchase this stock', key : 'Adj. Transaction Price:', value : "$" + adj, cache : adj, calc : calc },
               }
               checkLoaded()
            })
